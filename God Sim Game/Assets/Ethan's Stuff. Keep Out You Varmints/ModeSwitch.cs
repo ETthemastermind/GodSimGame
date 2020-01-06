@@ -20,9 +20,9 @@ public class ModeSwitch : MonoBehaviour
     private bool GodModeActive = false;
     public AudioSource audioSource;
 
-    public TextMeshProUGUI CameraModeHud;
-    public TextMeshProUGUI EnvironmentModeHud;
-    public TextMeshProUGUI GodModeHud;
+    public GameObject CameraModeHud;
+    public GameObject EnvironmentModeHud;
+    public GameObject GodModeHud;
 
     public GameObject TreePrefab;
     public GameObject CastlePrefab;
@@ -39,10 +39,14 @@ public class ModeSwitch : MonoBehaviour
     public GameObject VillagePrefab;
     public GameObject HumanPrefab;
 
+    public Animator EnvMenuAnim;
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
+        EnvMenuAnim.enabled = false;
         
         Debug.Log("Script active");
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -68,8 +72,8 @@ public class ModeSwitch : MonoBehaviour
         keywordRecogniser.Start();
 
 
-        EnvironmentModeHud.enabled = false;
-        GodModeHud.enabled = false;
+        EnvironmentModeHud.SetActive(false);
+        GodModeHud.SetActive(false);
     }
 
     // Update is called once per frame
@@ -86,37 +90,49 @@ public class ModeSwitch : MonoBehaviour
     {
         Debug.Log("Activating Camera Mode");
         audioSource.PlayOneShot(CameraModeAudio);
-        CameraModeHud.enabled = true;
-        EnvironmentModeHud.enabled = false;
-        GodModeHud.enabled = false;
+        CameraModeHud.SetActive(true);
+        EnvironmentModeHud.SetActive(false);
+        GodModeHud.SetActive(false);
 
         CameraModeActive = true;
         EnvironmentModeActive = false;
         GodModeActive = false;
+        HideMenu();
 
         
-  
+        
+
+
+
+
     }
     private void EnvironmentMode()
     {
         Debug.Log("Activating Environment Mode");
         audioSource.PlayOneShot(EnvironmentModeAudio);
-        CameraModeHud.enabled = false;
-        EnvironmentModeHud.enabled = true;
-        GodModeHud.enabled = false;
+    
+        CameraModeHud.SetActive(false);
+        EnvironmentModeHud.SetActive(true);
+        GodModeHud.SetActive(false);
+
+        ShowMenu();
 
         EnvironmentModeActive = true;
         GodModeActive = false;
         CameraModeActive = false;
+
 
     }
     private void GodMode()
     {
         Debug.Log("Activating God Mode");
         audioSource.PlayOneShot(GodModeAudio);
-        CameraModeHud.enabled = false;
-        EnvironmentModeHud.enabled = false;
-        GodModeHud.enabled = true;
+
+        CameraModeHud.SetActive(false);
+        EnvironmentModeHud.SetActive(false);
+        GodModeHud.SetActive(true);
+
+        HideMenu();
 
         GodModeActive = true;
         CameraModeActive = false;
@@ -231,6 +247,18 @@ public class ModeSwitch : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ShowMenu()
+    {
+        EnvMenuAnim.enabled = true;
+        EnvMenuAnim.Play("EnvMenuSlide");
+    }
+
+    public void HideMenu()
+    {
+        
+        EnvMenuAnim.Play("EnvMenuSlide 0");
     }
 }
 
