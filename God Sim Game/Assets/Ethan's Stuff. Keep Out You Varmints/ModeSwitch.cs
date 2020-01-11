@@ -39,6 +39,13 @@ public class ModeSwitch : MonoBehaviour
     public GameObject VillagePrefab;
     public GameObject HumanPrefab;
 
+    public GameObject Meteor;
+    public GameObject Firebolt;
+    public GameObject Tornado;
+    public GameObject EldritchHorror;
+
+    
+
     public Animator EnvMenuAnim;
     
 
@@ -66,6 +73,11 @@ public class ModeSwitch : MonoBehaviour
         actions.Add("Spawn Town Here", SpawnTown);
         actions.Add("Spawn Village Here", SpawnVillage);
         actions.Add("Spawn Human Here", SpawnHuman);
+        actions.Add("Spawn Meteor Here", SpawnMeteor);
+        actions.Add("Spawn Fire Here", SpawnFire);
+        actions.Add("Spawn Tornado Here", SpawnTornado);
+        actions.Add("Spawn Eldritch Horror", SpawnHorror);
+
 
         keywordRecogniser = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecogniser.OnPhraseRecognized += RecognisedSpeech;
@@ -242,6 +254,57 @@ public class ModeSwitch : MonoBehaviour
             Debug.Log("Spawning Human");
             Instantiate(HumanPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
         }
+    }
+
+
+    private void SpawnMeteor()
+    {
+        if (GodModeActive == true)
+        {
+            Debug.Log("Spawning Meteor");
+            Instantiate(Meteor, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+
+
+        }
+
+    }
+
+
+    private void SpawnFire()
+    {
+        if (GodModeActive == true)
+        {
+            Debug.Log("Spawning Fire");
+            Instantiate(Firebolt, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+
+        }
+
+    }
+
+    private void SpawnTornado()
+    {
+        if (GodModeActive == true)
+        {
+            Debug.Log("Spawning Tornado");
+            Instantiate(Tornado, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+
+
+        }
+
+
+    }
+
+    private void SpawnHorror()
+    {
+        if (GodModeActive == true)
+        {
+            Debug.Log("Spookums Intensifies");
+            Instantiate(EldritchHorror, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+
+
+        }
+
+
     }
 
     void Update()

@@ -671,6 +671,11 @@ MonoBehaviour:
   VillagePrefab: {fileID: 1894227373132106, guid: 4fbd252196892684286e1d961b54195f,
     type: 3}
   HumanPrefab: {fileID: 100022, guid: 2c972239f8d58d944a0e1cff0da4ac22, type: 3}
+  Meteor: {fileID: 164416, guid: 8aeb2c0224fe763499eed3ec0587162b, type: 3}
+  Firebolt: {fileID: 118616, guid: 8c51d7df2d29ba8449f85eb74c672555, type: 3}
+  Tornado: {fileID: 108504, guid: d18380a6098943a4a879b5a0f3826c9d, type: 3}
+  EldritchHorror: {fileID: 1592711153756366, guid: b29c1c092b2b341438abc1f2b36f1213,
+    type: 3}
   EnvMenuAnim: {fileID: 1222628692}
 --- !u!65 &662714896
 BoxCollider:
