@@ -61,7 +61,7 @@ public class ActiveHex : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         Debug.Log(gameObject.name + "Active Hex");
         Biome = other.gameObject;
