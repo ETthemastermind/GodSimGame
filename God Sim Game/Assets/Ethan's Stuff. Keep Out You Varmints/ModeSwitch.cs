@@ -15,9 +15,9 @@ public class ModeSwitch : MonoBehaviour
     public AudioClip EnvironmentModeAudio;
     public AudioClip GodModeAudio;
 
-    private bool CameraModeActive = true;
-    private bool EnvironmentModeActive = false;
-    private bool GodModeActive = false;
+    private static bool CameraModeActive = true;
+    private static bool EnvironmentModeActive = false;
+    private static bool GodModeActive = false;
     public AudioSource audioSource;
 
     public GameObject CameraModeHud;
@@ -62,6 +62,7 @@ public class ModeSwitch : MonoBehaviour
         actions.Add("Activate God Mode", GodMode);
         actions.Add("Spawn Tree Here", SpawnTree);
         actions.Add("Spawn Castle Here", SpawnCastle);
+        actions.Add("Spawn Pyramid Here", SpawnPyramid);
         actions.Add("Spawn Cactus Here", SpawnCactus);
         actions.Add("Spawn Mountain Here", SpawnMountain);
         actions.Add("Spawn Flower Here", SpawnFlower);
@@ -167,6 +168,17 @@ public class ModeSwitch : MonoBehaviour
             Instantiate(CastlePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
         }
     }
+
+    private void SpawnPyramid()
+    {
+        if (EnvironmentModeActive == true)
+        {
+            Debug.Log("Spawning Pyramid");
+            Instantiate(PyramidPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+        }
+    }
+
+
     private void SpawnCactus()
     {
         if (EnvironmentModeActive == true)
