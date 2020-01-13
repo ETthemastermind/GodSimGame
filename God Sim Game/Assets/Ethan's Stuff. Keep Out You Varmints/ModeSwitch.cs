@@ -15,14 +15,17 @@ public class ModeSwitch : MonoBehaviour
     public AudioClip EnvironmentModeAudio;
     public AudioClip GodModeAudio;
 
-    private static bool CameraModeActive = true;
-    private static bool EnvironmentModeActive = false;
-    private static bool GodModeActive = false;
+    public static bool CameraModeActive = true;
+    public static bool EnvironmentModeActive = false;
+    public static bool GodModeActive = false;
     public AudioSource audioSource;
 
     public GameObject CameraModeHud;
     public GameObject EnvironmentModeHud;
     public GameObject GodModeHud;
+
+    public GameObject EnvGui;
+    public GameObject SpawnGui;
 
     public GameObject TreePrefab;
     public GameObject CastlePrefab;
@@ -45,20 +48,21 @@ public class ModeSwitch : MonoBehaviour
     public GameObject EldritchHorror;
 
     
+    
 
-    public Animator EnvMenuAnim;
+    
     
 
 
     // Start is called before the first frame update
     void Start()
     {
-        EnvMenuAnim.enabled = false;
+        
         
         Debug.Log("Script active");
         audioSource = gameObject.GetComponent<AudioSource>();
         actions.Add("Activate Camera Mode", CameraMode);
-        actions.Add("Activate Environment Mode", EnvironmentMode);
+        actions.Add("Activate Environment Mode", EnvironmentMode);  //rework the spawning mechanic
         actions.Add("Activate God Mode", GodMode);
         actions.Add("Spawn Tree Here", SpawnTree);
         actions.Add("Spawn Castle Here", SpawnCastle);
@@ -77,7 +81,7 @@ public class ModeSwitch : MonoBehaviour
         actions.Add("Spawn Meteor Here", SpawnMeteor);
         actions.Add("Spawn Fire Here", SpawnFire);
         actions.Add("Spawn Tornado Here", SpawnTornado);
-        actions.Add("Spawn Eldritch Horror", SpawnHorror);
+        actions.Add("Spawn Horror Here", SpawnHorror);
 
 
         keywordRecogniser = new KeywordRecognizer(actions.Keys.ToArray());
@@ -87,6 +91,8 @@ public class ModeSwitch : MonoBehaviour
 
         EnvironmentModeHud.SetActive(false);
         GodModeHud.SetActive(false);
+
+        EnvGui.SetActive(false);
     }
 
     // Update is called once per frame
@@ -110,7 +116,9 @@ public class ModeSwitch : MonoBehaviour
         CameraModeActive = true;
         EnvironmentModeActive = false;
         GodModeActive = false;
-        HideMenu();
+
+        EnvGui.SetActive(false);
+        
 
         
         
@@ -128,11 +136,13 @@ public class ModeSwitch : MonoBehaviour
         EnvironmentModeHud.SetActive(true);
         GodModeHud.SetActive(false);
 
-        ShowMenu();
+        
 
         EnvironmentModeActive = true;
         GodModeActive = false;
         CameraModeActive = false;
+
+        EnvGui.SetActive(true);
 
 
     }
@@ -144,12 +154,13 @@ public class ModeSwitch : MonoBehaviour
         CameraModeHud.SetActive(false);
         EnvironmentModeHud.SetActive(false);
         GodModeHud.SetActive(true);
-
-        HideMenu();
+        
 
         GodModeActive = true;
         CameraModeActive = false;
         EnvironmentModeActive = false;
+
+        EnvGui.SetActive(false);
     }
 
     private void SpawnTree()
@@ -324,17 +335,7 @@ public class ModeSwitch : MonoBehaviour
         
     }
 
-    public void ShowMenu()
-    {
-        EnvMenuAnim.enabled = true;
-        EnvMenuAnim.Play("EnvMenuSlide");
-    }
-
-    public void HideMenu()
-    {
-        
-        EnvMenuAnim.Play("EnvMenuSlide 0");
-    }
+    
 }
 
 

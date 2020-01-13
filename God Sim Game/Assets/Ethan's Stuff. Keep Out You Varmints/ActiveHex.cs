@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.Windows.Speech;
+using UnityEngine.UI;
 
 public class ActiveHex : MonoBehaviour
 {
@@ -19,16 +20,29 @@ public class ActiveHex : MonoBehaviour
     public GameObject Grass_Biome;
     public GameObject Hell_Biome;
     public GameObject Desert_Biome;
+
+    private bool ChangeBiomeBool = false;
+
+    public GameObject BiomeUI;
+    public GameObject EnvUI;
+
+
+
+    public Vector3 BiomeChangeOffset;
     // Start is called before the first frame update
-    void Start()
+    void Start() //make it so the biome resets back down if they player changes mode while the change biome is active
+
     {
-        actions.Add("Change this biome to Swamp", Swamp);
-        actions.Add("Change this biome to Water", Water);
-        actions.Add("Change this biome to Mesa", Mesa);
-        actions.Add("Change this biome to Ice", Ice);
-        actions.Add("Change this biome to Grass", Grass);
-        actions.Add("Change this biome to Hell", Hell);
-        actions.Add("Change this biome to Desert", Desert);
+        actions.Add("Change this biome to", ChangeBiome);
+        actions.Add("Make this biome a", ChangeBiome);
+
+        actions.Add("Swamp", Swamp);
+        actions.Add("Water", Water);
+        actions.Add("Mesa", Mesa);
+        actions.Add("Ice", Ice);
+        actions.Add("Grass", Grass);
+        actions.Add("Hell", Hell);
+        actions.Add("Desert", Desert);
 
 
 
@@ -58,6 +72,13 @@ public class ActiveHex : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ModeSwitch.EnvironmentModeActive == false & ChangeBiomeBool == true)
+        {
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+            ChangeBiomeBool = false;
+
+        }
+        
         
     }
 
@@ -80,6 +101,12 @@ public class ActiveHex : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log(gameObject.name + "Inactive Hex");
+        if (ChangeBiomeBool == true)
+        {
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+            ChangeBiomeBool = false;
+        }
+        
         Biome = GameObject.FindGameObjectWithTag("PlaceHolderObject");
 
         Default_Biome = Biome.transform.GetChild(0).gameObject;
@@ -93,95 +120,191 @@ public class ActiveHex : MonoBehaviour
 
     }
 
+    public void ChangeBiome()
+    {
+        if (ModeSwitch.EnvironmentModeActive == true & ChangeBiomeBool == false)
+        {
+            Debug.Log("Changing Biome");
+            ChangeBiomeBool = true;
+
+            BiomeUI.SetActive(true);
+            EnvUI.SetActive(false);
+
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y + 0.5f, Biome.transform.position.z);
+
+        }
+        
+        
+
+    }
+
     public void Swamp()
     {
-        Debug.Log("Changing biome to Swamp");
-        Default_Biome.SetActive(false);
-        Swamp_Biome.SetActive(true);
-        Water_Biome.SetActive(false);
-        Mesa_Biome.SetActive(false);
-        Ice_Biome.SetActive(false);
-        Grass_Biome.SetActive(false);
-        Hell_Biome.SetActive(false);
-        Desert_Biome.SetActive(false);
+        if (ChangeBiomeBool == true & ModeSwitch.EnvironmentModeActive)
+        {
+            Debug.Log("Changing biome to Swamp");
+            Default_Biome.SetActive(false);
+            Swamp_Biome.SetActive(true);
+            Water_Biome.SetActive(false);
+            Mesa_Biome.SetActive(false);
+            Ice_Biome.SetActive(false);
+            Grass_Biome.SetActive(false);
+            Hell_Biome.SetActive(false);
+            Desert_Biome.SetActive(false);
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+
+            BiomeUI.SetActive(false);
+            EnvUI.SetActive(true);
+
+            ChangeBiomeBool = false;
+
+        }
+        
     }
 
     public void Water()
     {
-        Debug.Log("Changing biome to true");
-        Default_Biome.SetActive(false);
-        Swamp_Biome.SetActive(false);
-        Water_Biome.SetActive(true);
-        Mesa_Biome.SetActive(false);
-        Ice_Biome.SetActive(false);
-        Grass_Biome.SetActive(false);
-        Hell_Biome.SetActive(false);
-        Desert_Biome.SetActive(false);
+        if (ChangeBiomeBool == true & ModeSwitch.EnvironmentModeActive)
+        {
+            Debug.Log("Changing biome to true");
+            Default_Biome.SetActive(false);
+            Swamp_Biome.SetActive(false);
+            Water_Biome.SetActive(true);
+            Mesa_Biome.SetActive(false);
+            Ice_Biome.SetActive(false);
+            Grass_Biome.SetActive(false);
+            Hell_Biome.SetActive(false);
+            Desert_Biome.SetActive(false);
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+
+            BiomeUI.SetActive(false);
+            EnvUI.SetActive(true);
+
+            ChangeBiomeBool = false;
+        }
+        
     }
 
     public void Mesa()
     {
-        Debug.Log("Changing biome to Mesa");
-        Default_Biome.SetActive(false);
-        Swamp_Biome.SetActive(false);
-        Water_Biome.SetActive(false);
-        Mesa_Biome.SetActive(true);
-        Ice_Biome.SetActive(false);
-        Grass_Biome.SetActive(false);
-        Hell_Biome.SetActive(false);
-        Desert_Biome.SetActive(false);
+        if (ChangeBiomeBool == true & ModeSwitch.EnvironmentModeActive)
+        {
+            Debug.Log("Changing biome to Mesa");
+            Default_Biome.SetActive(false);
+            Swamp_Biome.SetActive(false);
+            Water_Biome.SetActive(false);
+            Mesa_Biome.SetActive(true);
+            Ice_Biome.SetActive(false);
+            Grass_Biome.SetActive(false);
+            Hell_Biome.SetActive(false);
+            Desert_Biome.SetActive(false);
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+
+            BiomeUI.SetActive(false);
+            EnvUI.SetActive(true);
+
+            ChangeBiomeBool = false;
+
+        }
+        
     }
 
     public void Ice()
     {
-        Debug.Log("Changing biome to Swamp");
-        Default_Biome.SetActive(false);
-        Swamp_Biome.SetActive(false);
-        Water_Biome.SetActive(false);
-        Mesa_Biome.SetActive(false);
-        Ice_Biome.SetActive(true);
-        Grass_Biome.SetActive(false);
-        Hell_Biome.SetActive(false);
-        Desert_Biome.SetActive(false);
+        if (ChangeBiomeBool == true & ModeSwitch.EnvironmentModeActive)
+        {
+            Debug.Log("Changing biome to Ice");
+            Default_Biome.SetActive(false);
+            Swamp_Biome.SetActive(false);
+            Water_Biome.SetActive(false);
+            Mesa_Biome.SetActive(false);
+            Ice_Biome.SetActive(true);
+            Grass_Biome.SetActive(false);
+            Hell_Biome.SetActive(false);
+            Desert_Biome.SetActive(false);
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+
+            BiomeUI.SetActive(false);
+            EnvUI.SetActive(true);
+
+            ChangeBiomeBool = false;
+
+        }
+        
     }
 
     public void Grass()
     {
-        Debug.Log("Changing biome to Swamp");
-        Default_Biome.SetActive(false);
-        Swamp_Biome.SetActive(false);
-        Water_Biome.SetActive(false);
-        Mesa_Biome.SetActive(false);
-        Ice_Biome.SetActive(false);
-        Grass_Biome.SetActive(true);
-        Hell_Biome.SetActive(false);
-        Desert_Biome.SetActive(false);
+        if (ChangeBiomeBool == false & ModeSwitch.EnvironmentModeActive)
+        {
+            Debug.Log("Changing biome to Grass");
+            Default_Biome.SetActive(false);
+            Swamp_Biome.SetActive(false);
+            Water_Biome.SetActive(false);
+            Mesa_Biome.SetActive(false);
+            Ice_Biome.SetActive(false);
+            Grass_Biome.SetActive(true);
+            Hell_Biome.SetActive(false);
+            Desert_Biome.SetActive(false);
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+
+            BiomeUI.SetActive(false);
+            EnvUI.SetActive(true);
+
+            ChangeBiomeBool = false;
+
+        }
+        
     }
 
     public void Hell()
     {
-        Debug.Log("Changing biome to Swamp");
-        Default_Biome.SetActive(false);
-        Swamp_Biome.SetActive(false);
-        Water_Biome.SetActive(false);
-        Mesa_Biome.SetActive(false);
-        Ice_Biome.SetActive(false);
-        Grass_Biome.SetActive(false);
-        Hell_Biome.SetActive(true);
-        Desert_Biome.SetActive(false);
+        if (ChangeBiomeBool == true & ModeSwitch.EnvironmentModeActive)
+        {
+            Debug.Log("Changing biome to Hell");
+            Default_Biome.SetActive(false);
+            Swamp_Biome.SetActive(false);
+            Water_Biome.SetActive(false);
+            Mesa_Biome.SetActive(false);
+            Ice_Biome.SetActive(false);
+            Grass_Biome.SetActive(false);
+            Hell_Biome.SetActive(true);
+            Desert_Biome.SetActive(false);
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+
+            BiomeUI.SetActive(false);
+            EnvUI.SetActive(true);
+
+            ChangeBiomeBool = false;
+
+
+        }
+        
     }
 
     public void Desert()
     {
-        Debug.Log("Changing biome to Swamp");
-        Default_Biome.SetActive(false);
-        Swamp_Biome.SetActive(false);
-        Water_Biome.SetActive(false);
-        Mesa_Biome.SetActive(false);
-        Ice_Biome.SetActive(false);
-        Grass_Biome.SetActive(false);
-        Hell_Biome.SetActive(false);
-        Desert_Biome.SetActive(true);
+        if (ChangeBiomeBool == true & ModeSwitch.EnvironmentModeActive)
+        {
+            Debug.Log("Changing biome to Desert");
+            Default_Biome.SetActive(false);
+            Swamp_Biome.SetActive(false);
+            Water_Biome.SetActive(false);
+            Mesa_Biome.SetActive(false);
+            Ice_Biome.SetActive(false);
+            Grass_Biome.SetActive(false);
+            Hell_Biome.SetActive(false);
+            Desert_Biome.SetActive(true);
+            Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
+
+            BiomeUI.SetActive(false);
+            EnvUI.SetActive(true);
+
+            ChangeBiomeBool = false;
+
+
+        }
+        
     }
 
 }
