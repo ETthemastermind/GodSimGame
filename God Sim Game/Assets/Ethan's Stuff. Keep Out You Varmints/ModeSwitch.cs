@@ -24,8 +24,15 @@ public class ModeSwitch : MonoBehaviour
     public GameObject EnvironmentModeHud;
     public GameObject GodModeHud;
 
+    private bool SpawnBool = false;
+    private bool InterventionBool = false;
+
     public GameObject EnvGui;
+    public GameObject GodGUI;
     public GameObject SpawnGui;
+    public GameObject InterventionGUI;
+    public GameObject Interventions;
+    public GameObject GodSpawn;
 
     public GameObject TreePrefab;
     public GameObject CastlePrefab;
@@ -64,24 +71,27 @@ public class ModeSwitch : MonoBehaviour
         actions.Add("Activate Camera Mode", CameraMode);
         actions.Add("Activate Environment Mode", EnvironmentMode);  //rework the spawning mechanic
         actions.Add("Activate God Mode", GodMode);
-        actions.Add("Spawn Tree Here", SpawnTree);
-        actions.Add("Spawn Castle Here", SpawnCastle);
-        actions.Add("Spawn Pyramid Here", SpawnPyramid);
-        actions.Add("Spawn Cactus Here", SpawnCactus);
-        actions.Add("Spawn Mountain Here", SpawnMountain);
-        actions.Add("Spawn Flower Here", SpawnFlower);
-        actions.Add("Spawn Ice Mountain Here", SpawnIceMountain);
-        actions.Add("Spawn Palm Tree Here", SpawnPalmTree);
-        actions.Add("Spawn Rocks Here", SpawnRocks);
-        actions.Add("Spawn Snowy Trees Here", SpawnSnowyTrees);
-        actions.Add("Spawn Swamp Here", SpawnSwamp);
-        actions.Add("Spawn Town Here", SpawnTown);
-        actions.Add("Spawn Village Here", SpawnVillage);
-        actions.Add("Spawn Human Here", SpawnHuman);
-        actions.Add("Spawn Meteor Here", SpawnMeteor);
-        actions.Add("Spawn Fire Here", SpawnFire);
-        actions.Add("Spawn Tornado Here", SpawnTornado);
-        actions.Add("Spawn Horror Here", SpawnHorror);
+
+        actions.Add("Spawn", SpawnItem);
+        actions.Add("Tree", SpawnTree);
+        actions.Add("Castle", SpawnCastle);
+        actions.Add("Pyramid", SpawnPyramid);
+        actions.Add("Cactus", SpawnCactus);
+        actions.Add("Mountain", SpawnMountain);
+        actions.Add("Flower", SpawnFlower);
+        actions.Add("Ice Mountain", SpawnIceMountain);
+        actions.Add("Palm Tree", SpawnPalmTree);
+        actions.Add("Rocks", SpawnRocks);
+        actions.Add("Snowy Trees", SpawnSnowyTrees);
+        actions.Add("Swamp Tendrils", SpawnSwamp);
+        actions.Add("Town", SpawnTown);
+        actions.Add("Village", SpawnVillage);
+        actions.Add("Human", SpawnHuman);
+
+        actions.Add("Meteor", SpawnMeteor);
+        actions.Add("Fire", SpawnFire);
+        actions.Add("Tornado", SpawnTornado);
+        actions.Add("Horror", SpawnHorror);
 
 
         keywordRecogniser = new KeywordRecognizer(actions.Keys.ToArray());
@@ -118,10 +128,11 @@ public class ModeSwitch : MonoBehaviour
         GodModeActive = false;
 
         EnvGui.SetActive(false);
-        
+        GodGUI.SetActive(false);
 
-        
-        
+
+
+
 
 
 
@@ -161,121 +172,202 @@ public class ModeSwitch : MonoBehaviour
         EnvironmentModeActive = false;
 
         EnvGui.SetActive(false);
+        GodGUI.SetActive(true);
+        GodSpawn.SetActive(true);
+    }
+
+    private void SpawnItem()
+    {
+        if (EnvironmentModeActive == true & SpawnBool == false)
+        {
+            SpawnBool = true;
+            EnvGui.SetActive(false);
+            SpawnGui.SetActive(true);
+
+
+        }
+
+        if (GodModeActive == true & InterventionBool == false)
+        {
+            InterventionBool = true;
+            GodGUI.SetActive(true);
+            GodSpawn.SetActive(false);
+            InterventionGUI.SetActive(true);
+
+
+        }
+
+
     }
 
     private void SpawnTree()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Tree");
             Instantiate(TreePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnCastle()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Castle");
             Instantiate(CastlePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
 
     private void SpawnPyramid()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Pyramid");
             Instantiate(PyramidPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
 
 
     private void SpawnCactus()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Cactus");
             Instantiate(CactusPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnMountain()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Mountain");
             Instantiate(MountainPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnFlower()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Flower");
             Instantiate(FlowerPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnIceMountain()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Ice Mountain");
             Instantiate(IceMountainPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnPalmTree()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Tree");
             Instantiate(TreePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnRocks()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Rocks");
             Instantiate(RocksPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnSnowyTrees()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Snowy Trees");
             Instantiate(SnowyTreePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnSwamp()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Swamp");
             Instantiate(SwampPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnTown()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Town");
             Instantiate(TownPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnVillage()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Village");
             Instantiate(VillagePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
     private void SpawnHuman()
     {
-        if (EnvironmentModeActive == true)
+        if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Human");
             Instantiate(HumanPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
         }
     }
 
@@ -286,6 +378,12 @@ public class ModeSwitch : MonoBehaviour
         {
             Debug.Log("Spawning Meteor");
             Instantiate(Meteor, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+
+            GodSpawn.SetActive(true);
+            InterventionGUI.SetActive(false);
+
+            InterventionBool = false;
+
 
 
         }
@@ -299,7 +397,10 @@ public class ModeSwitch : MonoBehaviour
         {
             Debug.Log("Spawning Fire");
             Instantiate(Firebolt, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            GodSpawn.SetActive(true);
+            InterventionGUI.SetActive(false);
 
+            InterventionBool = false;
         }
 
     }
@@ -310,8 +411,12 @@ public class ModeSwitch : MonoBehaviour
         {
             Debug.Log("Spawning Tornado");
             Instantiate(Tornado, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            GodSpawn.SetActive(true);
+            InterventionGUI.SetActive(false);
 
+            InterventionBool = false;
 
+            
         }
 
 
@@ -323,6 +428,10 @@ public class ModeSwitch : MonoBehaviour
         {
             Debug.Log("Spookums Intensifies");
             Instantiate(EldritchHorror, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            GodSpawn.SetActive(true);
+            InterventionGUI.SetActive(false);
+
+            InterventionBool = false;
 
 
         }

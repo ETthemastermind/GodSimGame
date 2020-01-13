@@ -235,7 +235,7 @@ public class ActiveHex : MonoBehaviour
 
     public void Grass()
     {
-        if (ChangeBiomeBool == false & ModeSwitch.EnvironmentModeActive)
+        if (ChangeBiomeBool == true & ModeSwitch.EnvironmentModeActive)
         {
             Debug.Log("Changing biome to Grass");
             Default_Biome.SetActive(false);
