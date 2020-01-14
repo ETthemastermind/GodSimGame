@@ -10,8 +10,11 @@ public class DeleteObject : MonoBehaviour
     private KeywordRecognizer keywordRecogniser;
     private Dictionary<string, System.Action> actions = new Dictionary<string, System.Action>();
 
-    private bool DeleteBool;
-    private GameObject ObjectToDelete;
+    private bool DeleteBool = false;
+    private GameObject[] ObjectToDelete;
+
+    public Collider[] hitColliders;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,25 +31,18 @@ public class DeleteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DeleteBool == true)
-        {
-            Destroy(ObjectToDelete);
-            DeleteBool = false;
-        }
+        Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(gameObject.transform.position, 0.1f);
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
+
+        Debug.Log(Physics.OverlapSphere(gameObject.transform.position, 1f));
+      
         
         
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "EnvProp")
-        {
-            Debug.Log(other.name);
-            ObjectToDelete = other.gameObject;
-            
-        }
-        
-    }
+    
 
     private void RecognisedSpeech(PhraseRecognizedEventArgs speech)
     {
@@ -56,7 +52,9 @@ public class DeleteObject : MonoBehaviour
 
     public void Delete()
     {
+
         DeleteBool = true;
+        
 
     }
 }
