@@ -16,13 +16,13 @@ public class PointAtObject : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Update()
+    public void PointAt()
     {
         RaycastHit hit;
-        if (Physics.SphereCast(Finger.transform.position, 3.0f, Finger.transform.forward, out hit, 10.0f, layerMask, QueryTriggerInteraction.UseGlobal))
+        if (Physics.SphereCast(Finger.transform.position, 5.5f, Finger.transform.forward, out hit, 20.0f, layerMask, QueryTriggerInteraction.UseGlobal))
         {
             currentHitDistance = hit.distance;
-            //Debug.Log("We hit a " + hit.collider.name);
+            Debug.Log("We hit a " + hit.collider.name);
         }
         else
         {
