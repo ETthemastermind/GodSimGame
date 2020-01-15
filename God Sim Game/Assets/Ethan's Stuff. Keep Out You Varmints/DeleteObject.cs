@@ -11,7 +11,7 @@ public class DeleteObject : MonoBehaviour
     private Dictionary<string, System.Action> actions = new Dictionary<string, System.Action>();
 
     private bool DeleteBool = false;
-    private GameObject[] ObjectToDelete;
+    private GameObject ObjectToDelete;
 
     public Collider[] hitColliders;
 
@@ -31,12 +31,7 @@ public class DeleteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(gameObject.transform.position, 0.1f);
-
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
-
-        Debug.Log(Physics.OverlapSphere(gameObject.transform.position, 1f));
+        
       
         
         
@@ -53,8 +48,17 @@ public class DeleteObject : MonoBehaviour
     public void Delete()
     {
 
-        DeleteBool = true;
+        Destroy(ObjectToDelete);
         
 
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "EnvProp")
+        {
+            ObjectToDelete = other.gameObject;
+
+        }
     }
 }

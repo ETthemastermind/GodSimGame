@@ -76,6 +76,7 @@ public class ActiveHex : MonoBehaviour
         {
             Biome.transform.position = new Vector3(Biome.transform.position.x, Biome.transform.position.y - 0.5f, Biome.transform.position.z);
             ChangeBiomeBool = false;
+            BiomeUI.SetActive(false);
 
         }
         

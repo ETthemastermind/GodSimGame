@@ -15,9 +15,9 @@ public class ModeSwitch : MonoBehaviour
     public AudioClip EnvironmentModeAudio;
     public AudioClip GodModeAudio;
 
-    public static bool CameraModeActive = true;
+    public static bool CameraModeActive = false;
     public static bool EnvironmentModeActive = false;
-    public static bool GodModeActive = false;
+    public static bool GodModeActive = true;
     public AudioSource audioSource;
 
     public GameObject CameraModeHud;
@@ -98,11 +98,13 @@ public class ModeSwitch : MonoBehaviour
         keywordRecogniser.OnPhraseRecognized += RecognisedSpeech;
         keywordRecogniser.Start();
 
-
+        CameraModeHud.SetActive(false);
         EnvironmentModeHud.SetActive(false);
-        GodModeHud.SetActive(false);
+        GodModeHud.SetActive(true);
 
         EnvGui.SetActive(false);
+
+        GodMode();
     }
 
     // Update is called once per frame
@@ -129,6 +131,10 @@ public class ModeSwitch : MonoBehaviour
 
         EnvGui.SetActive(false);
         GodGUI.SetActive(false);
+        SpawnGui.SetActive(false);
+        InterventionGUI.SetActive(false);
+        GodSpawn.SetActive(false);
+
 
 
 
@@ -154,6 +160,10 @@ public class ModeSwitch : MonoBehaviour
         CameraModeActive = false;
 
         EnvGui.SetActive(true);
+        GodGUI.SetActive(false);
+        GodSpawn.SetActive(false);
+        InterventionGUI.SetActive(false);
+
 
 
     }
@@ -172,6 +182,7 @@ public class ModeSwitch : MonoBehaviour
         EnvironmentModeActive = false;
 
         EnvGui.SetActive(false);
+        SpawnGui.SetActive(false);
         GodGUI.SetActive(true);
         GodSpawn.SetActive(true);
     }
