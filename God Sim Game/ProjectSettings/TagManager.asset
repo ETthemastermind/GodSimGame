@@ -7,6 +7,7 @@ TagManager:
   - EnvProp
   - Activator
   - PlaceHolderObject
+  - DeleteCursor
   layers:
   - Default
   - TransparentFX
