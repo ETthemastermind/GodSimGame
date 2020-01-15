@@ -29,8 +29,8 @@ Transform:
   m_Children:
   - {fileID: 8984694646834442505}
   - {fileID: 8984694647929164745}
-  - {fileID: 8984694646462871117}
   - {fileID: 8984694647142321515}
+  - {fileID: 8984694646462871117}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -789,7 +789,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5835537197176368476}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8984694646462871116
 MeshFilter:
@@ -1517,6 +1517,12 @@ MonoBehaviour:
   VillagePrefab: {fileID: 1894227373132106, guid: 4fbd252196892684286e1d961b54195f,
     type: 3}
   HumanPrefab: {fileID: 100022, guid: 2c972239f8d58d944a0e1cff0da4ac22, type: 3}
+  HellSpikesPrefab: {fileID: 0}
+  HellTreesPrefab: {fileID: 0}
+  PlantPrefab: {fileID: 0}
+  GlacierPrefab: {fileID: 0}
+  SnowmanPrefab: {fileID: 0}
+  LogPrefab: {fileID: 0}
   Meteor: {fileID: 164416, guid: 8aeb2c0224fe763499eed3ec0587162b, type: 3}
   Firebolt: {fileID: 118616, guid: 8c51d7df2d29ba8449f85eb74c672555, type: 3}
   Tornado: {fileID: 108504, guid: d18380a6098943a4a879b5a0f3826c9d, type: 3}
@@ -1966,7 +1972,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5835537197176368476}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8984694647142321514
 MeshFilter:

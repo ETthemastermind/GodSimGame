@@ -48,6 +48,13 @@ public class ModeSwitch : MonoBehaviour
     public GameObject TownPrefab;
     public GameObject VillagePrefab;
     public GameObject HumanPrefab;
+    public GameObject HellSpikesPrefab;
+    public GameObject HellTreesPrefab;
+    public GameObject PlantPrefab;
+    public GameObject GlacierPrefab;
+    public GameObject SnowmanPrefab;
+    public GameObject LogPrefab;
+
 
     public GameObject Meteor;
     public GameObject Firebolt;
@@ -89,6 +96,12 @@ public class ModeSwitch : MonoBehaviour
         actions.Add("Town", SpawnTown);
         actions.Add("Village", SpawnVillage);
         actions.Add("Human", SpawnHuman);
+        actions.Add("Hell Spikes", SpawnHellSpikes);
+        actions.Add("Hell Trees", SpawnHellTrees);
+        actions.Add("Plant", SpawnPlant);
+        actions.Add("Glacier", SpawnGlacier);
+        actions.Add("Snowmen", SpawnSnowmen);
+        actions.Add("Log", SpawnLog);
 
         actions.Add("Meteor", SpawnMeteor);
         actions.Add("Fire", SpawnFire);
@@ -377,6 +390,84 @@ public class ModeSwitch : MonoBehaviour
         {
             Debug.Log("Spawning Human");
             Instantiate(HumanPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
+        }
+    }
+
+    private void SpawnHellSpikes()
+    {
+        if (EnvironmentModeActive == true & SpawnBool == true)
+        {
+            Debug.Log("Spawning Hell Spikes");
+            Instantiate(HellSpikesPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
+        }
+    }
+
+    private void SpawnHellTrees()
+    {
+        if (EnvironmentModeActive == true & SpawnBool == true)
+        {
+            Debug.Log("Spawning Hell Trees");
+            Instantiate(HellTreesPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
+        }
+    }
+
+    private void SpawnPlant()
+    {
+        if (EnvironmentModeActive == true & SpawnBool == true)
+        {
+            Debug.Log("Spawning Plant");
+            Instantiate(PlantPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
+        }
+    }
+
+    private void SpawnGlacier()
+    {
+        if (EnvironmentModeActive == true & SpawnBool == true)
+        {
+            Debug.Log("Spawning Glacier");
+            Instantiate(GlacierPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
+        }
+    }
+
+    private void SpawnSnowmen()
+    {
+        if (EnvironmentModeActive == true & SpawnBool == true)
+        {
+            Debug.Log("Spawning Snowmen");
+            Instantiate(SnowmanPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
+            SpawnBool = false;
+
+            EnvGui.SetActive(true);
+            SpawnGui.SetActive(false);
+        }
+    }
+
+    private void SpawnLog()
+    {
+        if (EnvironmentModeActive == true & SpawnBool == true)
+        {
+            Debug.Log("Spawning Log");
+            Instantiate(LogPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);

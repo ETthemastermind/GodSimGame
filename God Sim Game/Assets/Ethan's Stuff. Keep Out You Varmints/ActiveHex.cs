@@ -87,15 +87,24 @@ public class ActiveHex : MonoBehaviour
     {
         Debug.Log(gameObject.name + "Active Hex");
         Biome = other.gameObject;
+        if (other.gameObject.tag == "DeleteCursor")
+        {
 
-        Default_Biome = Biome.transform.GetChild(0).gameObject;
-        Swamp_Biome = Biome.transform.GetChild(1).gameObject;
-        Water_Biome = Biome.transform.GetChild(2).gameObject;
-        Mesa_Biome = Biome.transform.GetChild(3).gameObject;
-        Ice_Biome = Biome.transform.GetChild(4).gameObject;
-        Grass_Biome = Biome.transform.GetChild(5).gameObject;
-        Hell_Biome = Biome.transform.GetChild(6).gameObject;
-        Desert_Biome = Biome.transform.GetChild(7).gameObject;
+        }
+
+        else
+        {
+            Default_Biome = Biome.transform.GetChild(0).gameObject;
+            Swamp_Biome = Biome.transform.GetChild(1).gameObject;
+            Water_Biome = Biome.transform.GetChild(2).gameObject;
+            Mesa_Biome = Biome.transform.GetChild(3).gameObject;
+            Ice_Biome = Biome.transform.GetChild(4).gameObject;
+            Grass_Biome = Biome.transform.GetChild(5).gameObject;
+            Hell_Biome = Biome.transform.GetChild(6).gameObject;
+            Desert_Biome = Biome.transform.GetChild(7).gameObject;
+
+        }
+        
 
     }
 

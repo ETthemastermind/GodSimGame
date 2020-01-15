@@ -5,3 +5,10 @@ Spawn Biome? add blank areas around the starting zone that the player can add to
 https://www.youtube.com/watch?v=FkLJ45Pt-mY
 
 add the default panels around the outside of the current playable area
+
+Hell Spikes
+Hell Trees
+Plant
+Glacier
+Snowmen
+Log
