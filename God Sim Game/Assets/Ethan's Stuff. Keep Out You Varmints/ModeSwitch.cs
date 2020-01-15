@@ -54,6 +54,8 @@ public class ModeSwitch : MonoBehaviour
     public GameObject Tornado;
     public GameObject EldritchHorror;
 
+    public GameObject SpawnLocation;
+
     
     
 
@@ -216,7 +218,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Tree");
-            Instantiate(TreePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(TreePrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
             EnvGui.SetActive(true);
             SpawnGui.SetActive(false);
@@ -227,7 +229,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Castle");
-            Instantiate(CastlePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(CastlePrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -240,7 +242,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Pyramid");
-            Instantiate(PyramidPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(PyramidPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -254,7 +256,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Cactus");
-            Instantiate(CactusPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(CactusPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -266,7 +268,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Mountain");
-            Instantiate(MountainPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(MountainPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -278,7 +280,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Flower");
-            Instantiate(FlowerPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(FlowerPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -290,7 +292,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Ice Mountain");
-            Instantiate(IceMountainPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(IceMountainPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -302,7 +304,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Tree");
-            Instantiate(TreePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(TreePrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -314,7 +316,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Rocks");
-            Instantiate(RocksPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(RocksPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -326,7 +328,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Snowy Trees");
-            Instantiate(SnowyTreePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(SnowyTreePrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -338,7 +340,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Swamp");
-            Instantiate(SwampPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(SwampPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -350,7 +352,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Town");
-            Instantiate(TownPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(TownPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -362,7 +364,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Village");
-            Instantiate(VillagePrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(VillagePrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -374,7 +376,7 @@ public class ModeSwitch : MonoBehaviour
         if (EnvironmentModeActive == true & SpawnBool == true)
         {
             Debug.Log("Spawning Human");
-            Instantiate(HumanPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(HumanPrefab, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             SpawnBool = false;
 
             EnvGui.SetActive(true);
@@ -388,7 +390,7 @@ public class ModeSwitch : MonoBehaviour
         if (GodModeActive == true)
         {
             Debug.Log("Spawning Meteor");
-            Instantiate(Meteor, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(Meteor, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
 
             GodSpawn.SetActive(true);
             InterventionGUI.SetActive(false);
@@ -407,7 +409,7 @@ public class ModeSwitch : MonoBehaviour
         if (GodModeActive == true)
         {
             Debug.Log("Spawning Fire");
-            Instantiate(Firebolt, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(Firebolt, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             GodSpawn.SetActive(true);
             InterventionGUI.SetActive(false);
 
@@ -421,7 +423,7 @@ public class ModeSwitch : MonoBehaviour
         if (GodModeActive == true)
         {
             Debug.Log("Spawning Tornado");
-            Instantiate(Tornado, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(Tornado, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             GodSpawn.SetActive(true);
             InterventionGUI.SetActive(false);
 
@@ -438,7 +440,7 @@ public class ModeSwitch : MonoBehaviour
         if (GodModeActive == true)
         {
             Debug.Log("Spookums Intensifies");
-            Instantiate(EldritchHorror, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(EldritchHorror, new Vector3(SpawnLocation.transform.position.x, SpawnLocation.transform.position.y, SpawnLocation.transform.position.z), Quaternion.identity);
             GodSpawn.SetActive(true);
             InterventionGUI.SetActive(false);
 
